@@ -26,7 +26,7 @@ def wander(forward, right, left):
 	   	motion = random.choice([1,2])
 	elif (left == 0 and forward == 1 and right == 1):
 	   	print "4"
-	   	motion = 0
+	   	motion = 2
 	elif (left == 1 and forward == 0 and right == 0):
 	   	print "5"
 	   	motion = random.choice([0,1])
