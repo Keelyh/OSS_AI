@@ -10,15 +10,19 @@ class robot:
 		self.l_sensor = -2;
 		
 	def forward(self):
+		time.sleep(1)
 		self.arduino.write(chr(0))
 	
 	def right_turn(self):
+		time.sleep(1.5)
 		self.arduino.write(chr(1))
 		
 	def left_turn(self):
+		time.sleep(1.5)
 		self.arduino.write(chr(2))
 		
 	def one_eighty(self):
+		time.sleep(2.5)
 		self.arduino.write(chr(3))
 		
 	def stop(self):
@@ -34,8 +38,11 @@ class robot:
 		
 		# read the info from the sensors 
 		sen_data_str1 = str(self.arduino.readline())
+		print sen_data_str1
 		sen_data_str2 = str(self.arduino.readline())
+		print sen_data_str2
 		sen_data_str3 = str(self.arduino.readline())
+		print sen_data_str3
 		
 		# cast them to floats
 		if (sen_data_str1.isspace() == True):
@@ -81,14 +88,25 @@ class robot:
 			l_sen_data =  sen_data3 - 300
 		else:
 			counter += 1
-			
+		
+		"""	
 		if counter > 0:
 			return self.one_measure()
 		else:
 			return [f_sen_data, r_sen_data, l_sen_data]
+		"""
+		return [f_sen_data, r_sen_data, l_sen_data]
 	
 	def measure(self):
-		self.arduino.readline()
+		#self.arduino.readline()
+		
+		[f1, r1, l1] = self.one_measure()
+		
+		self.f_sensor = f1
+		self.r_sensor = r1
+		self.l_sensor = l1
+		"""
+		
 		flag = False
 		while (flag == False):
 			counter = 0
@@ -116,6 +134,7 @@ class robot:
 				self.r_sensor = r_avg
 				self.l_sensor = l_avg
 				flag = True
+		"""
 		return
 		
 		
