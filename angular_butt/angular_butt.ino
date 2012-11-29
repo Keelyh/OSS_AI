@@ -73,15 +73,6 @@ void one_eighty(){
   robot_stop();
 }
 
-void sense(){
-    f_sen = read_gp2d12_range(F_SEN);
-    r_sen = read_gp2d12_range(R_SEN);
-    l_sen = read_gp2d12_range(L_SEN);
-    Serial.println(100 + f_sen);
-    Serial.println(200 + r_sen);
-    Serial.println(300 + l_sen);
-}
-
 void loop() {
   if(Serial.available() > 0){
     CASE = Serial.read();
@@ -104,6 +95,11 @@ void loop() {
     }
   }
   else {
-    sense();
+    f_sen = read_gp2d12_range(F_SEN);
+    r_sen = read_gp2d12_range(R_SEN);
+    l_sen = read_gp2d12_range(L_SEN);
+    Serial.println(100 + f_sen);
+    Serial.println(200 + r_sen);
+    Serial.println(300 + l_sen);
   }
 }

@@ -49,7 +49,7 @@ def wander(forward, right, left):
 
 def calculate_front(front_distance):
 
-	if (front_distance <2):
+	if (front_distance <3):
 		front_num = 1
 	elif (front_distance <14):
 		front_num = 2
@@ -93,23 +93,22 @@ def calculate_sides(front_distance, side_distance):
 vrobot = robot()
 vrobot.stop()
 old_motion = 4
-for i in range(1500):
+for i in range(150):
 	vrobot.measure()
-	#print "Sensing:"
-	#print vrobot.f_sensor
-	#print vrobot.r_sensor
-	#print vrobot.l_sensor
+	print "Sensing:"
+	print vrobot.f_sensor
+	print vrobot.r_sensor
+	print vrobot.l_sensor
 	f_num = calculate_front(vrobot.f_sensor)
 	r_num = calculate_sides(vrobot.f_sensor, vrobot.r_sensor)
 	l_num = calculate_sides(vrobot.f_sensor, vrobot.l_sensor)
-	#print "Calculations before motion:"
-	#print f_num, r_num, l_num
+	print "Calculations before motion:"
+	print f_num, r_num, l_num
 	motion = wander(f_num, r_num, l_num)
-
+	print "Motion"
+	print motion
 	if motion != old_motion:
-		#print "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-		print "Motion"
-		print motion
+		print "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 		# 0 is go forward 
 		if motion == 0:
 			vrobot.forward()

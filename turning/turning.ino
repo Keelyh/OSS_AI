@@ -51,7 +51,7 @@ void right_turn(){
 void left_turn(){
   motor1.write(BKWD);
   motor2.write(FRWD);
-  delay(1400);
+  delay(1700);
   robot_stop();
 }
 
@@ -59,7 +59,7 @@ void left_turn(){
 void one_eighty(){
   motor1.write(FRWD);
   motor2.write(BKWD);
-  delay(2400);
+  delay(3200);
   robot_stop();
 }
 
@@ -70,7 +70,7 @@ void loop() {
   
   Serial.println(counter);
   if (counter == 0){
-    left_turn();
+    right_turn();
     counter += 1;
     Serial.println(counter);
   }
@@ -78,7 +78,7 @@ void loop() {
     robot_stop();
   }
   else {
-    forward();
+    robot_stop();
   }
   delay(100);
 }
